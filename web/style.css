@@ -1,0 +1,106 @@
+:root {
+  /* 깨진 액정 대응 여백. 실제 값은 보정 화면(?calibrate)에서 정하고 localStorage에 저장됨 */
+  --inset-top: 0px;
+  --inset-right: 0px;
+  --inset-bottom: 0px;
+  --inset-left: 0px;
+  --bg: #000;
+  --fg: #e8e8e8;
+  --muted: #8a8a8a;
+  --accent: #4da3ff;
+  --danger: #ff5a5a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: system-ui, -apple-system, 'Noto Sans KR', sans-serif;
+  overflow: hidden;
+}
+
+#safe {
+  position: fixed;
+  top: var(--inset-top);
+  right: var(--inset-right);
+  bottom: var(--inset-bottom);
+  left: var(--inset-left);
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  padding: 2vh 3vw;
+}
+
+.clock {
+  font-size: 14vh;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.date {
+  font-size: 3.5vh;
+  color: var(--muted);
+}
+
+.temp {
+  font-size: 10vh;
+  font-weight: 600;
+}
+
+.row {
+  font-size: 3.5vh;
+}
+
+.meta {
+  margin-top: auto;
+  font-size: 2.2vh;
+  color: var(--muted);
+}
+
+.error {
+  color: var(--danger);
+}
+
+/* ---------- 보정 화면 ---------- */
+.calib {
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.calib-frame {
+  position: fixed;
+  top: var(--inset-top);
+  right: var(--inset-right);
+  bottom: var(--inset-bottom);
+  left: var(--inset-left);
+  border: 3px solid var(--accent);
+}
+
+.calib-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 8px;
+  background: #111;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.calib-panel button {
+  font-size: 18px;
+  padding: 8px 12px;
+}
